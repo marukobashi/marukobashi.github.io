@@ -1,0 +1,11 @@
+#header {
+	
+	height: 500px;
+	overflow: hidden;
+}
+.header_nav {
+	position: relative;
+	margin: 0 auto;
+	width: 1280px;
+	z-index: 1000;
+}
