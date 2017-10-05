@@ -35,14 +35,14 @@
 
     var tubular = function(node, options) { // should be called on the wrapper div
         var options = $.extend({}, defaults, options),
-            $body = $('#header') // cache body node
+            $body = $('body') // cache body node
             $node = $(node); // cache wrapper node
 
         // build container
-        var tubularContainer = '<div id="tubular-container" style="overflow: hidden; position: fixed; z-index: 1; width: 100%; height: 500px"><div id="tubular-player" style="position: absolute"></div></div><div id="tubular-shield" style="width: 100%; height: 500px; z-index: 2; position: absolute; left: 0; top: 0;"></div>';
+        var tubularContainer = '<div id="tubular-container" style="overflow: hidden; position: fixed; z-index: 1; width: 100%; height: 100%"><div id="tubular-player" style="position: absolute"></div></div><div id="tubular-shield" style="width: 100%; height: 100%; z-index: 2; position: absolute; left: 0; top: 0;"></div>';
 
         // set up css prereq's, inject tubular container and set up wrapper defaults
-        $('#header').css({'width': '100%', 'height': '500px'});
+        $('html,body').css({'width': '100%', 'height': '100%'});
         $body.prepend(tubularContainer);
         $node.css({position: 'relative', 'z-index': options.wrapperZIndex});
 
@@ -104,7 +104,7 @@
             resize();
         })
 
-        $('#header').on('click','.' + options.playButtonClass, function(e) { // play button
+        $('body').on('click','.' + options.playButtonClass, function(e) { // play button
             e.preventDefault();
             player.playVideo();
         }).on('click', '.' + options.pauseButtonClass, function(e) { // pause button
